@@ -1,0 +1,43 @@
+{
+  "name": "nodeschool",
+  "version": "1.0.0",
+  "description": "Nodejs School trainings",
+  "main": "app.js",
+  "scripts": {
+    "mocha": "mocha --compilers js:babel-register",
+    "test": "mocha --compilers js:babel-register --recursive ./test/",
+    "start": "nodemon --exec npx babel-node -- ./app.js"
+  },
+  "babel": {
+    "presets": [
+      "env"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/adolgoff/nodeschool.git"
+  },
+  "keywords": [
+    "nodejs",
+    "node",
+    "training",
+    "school",
+    "npm"
+  ],
+  "author": "Alexander Dolgov",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/adolgoff/nodeschool/issues"
+  },
+  "homepage": "https://github.com/adolgoff/nodeschool#readme",
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-stage-2": "^6.24.1",
+    "babel-register": "^6.26.0",
+    "chai": "^4.1.2",
+    "mocha": "^5.1.1",
+    "nodemon": "^1.17.3"
+  },
+  "dependencies": {}
+}
