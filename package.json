@@ -4,9 +4,10 @@
   "description": "Nodejs School trainings",
   "main": "app.js",
   "scripts": {
+    "clear": "node -e \"process.stdout.write('\\033c')\"",
     "mocha": "mocha --compilers js:babel-register",
     "test": "mocha --compilers js:babel-register --recursive ./test/",
-    "start": "nodemon --exec npx babel-node -- ./app.js"
+    "start": "nodemon --exec npx babel-node -- ./src/app.js"
   },
   "babel": {
     "presets": [
