@@ -7,7 +7,8 @@
     "clear": "node -e \"process.stdout.write('\\033c')\"",
     "mocha": "mocha --compilers js:babel-register",
     "test": "mocha --compilers js:babel-register --recursive ./test/",
-    "start": "nodemon --exec npx babel-node -- ./src/app.js"
+    "start": "nodemon --exec npx babel-node -- ./src/app.js",
+    "utils": "npx babel-node -- ./utils/streams.js"
   },
   "babel": {
     "presets": [
@@ -38,10 +39,11 @@
     "babel-register": "^6.26.0",
     "chai": "^4.1.2",
     "mocha": "^5.1.1",
-    "nodemon": "^1.17.3"
+    "nodemon": "^1.17.5"
   },
   "dependencies": {
     "csvjson": "^5.0.0",
+    "csvtojson": "^2.0.4",
     "hound": "^1.0.5"
   }
 }
