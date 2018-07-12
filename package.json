@@ -2,12 +2,12 @@
   "name": "nodeschool",
   "version": "1.0.0",
   "description": "Nodejs School trainings",
-  "main": "app.js",
+  "main": "index.js",
   "scripts": {
     "clear": "node -e \"process.stdout.write('\\033c')\"",
     "mocha": "mocha --compilers js:babel-register",
     "test": "mocha --compilers js:babel-register --recursive ./test/",
-    "start": "nodemon --exec npx babel-node -- ./src/app.js",
+    "start": "nodemon --exec npx babel-node -- ./server/index.js",
     "utils": "npx babel-node -- ./utils/streams.js"
   },
   "babel": {
@@ -42,8 +42,11 @@
     "nodemon": "^1.17.5"
   },
   "dependencies": {
+    "cookie": "^0.3.1",
     "csvjson": "^5.0.0",
     "csvtojson": "^2.0.4",
-    "hound": "^1.0.5"
+    "express": "^4.16.3",
+    "hound": "^1.0.5",
+    "replacestream": "^4.0.3"
   }
 }
