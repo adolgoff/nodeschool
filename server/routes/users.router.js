@@ -1,6 +1,6 @@
 import users from '../models/users.model';
 
-const usersRenderer = (req, res, next) => {
+const usersRenderer = (req, res) => {
   if (req.method === 'GET'){
     const {id} = req.params;
     res.set('Content-Type', 'text/plain');

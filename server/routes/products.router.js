@@ -1,6 +1,6 @@
 import products from '../models/products.model';
 
-const productsRenderer = (req, res, next) => {
+const productsRenderer = (req, res) => {
   if (req.method === 'GET'){
     const {id} = req.params;
     res.set('Content-Type', 'text/plain');
@@ -11,7 +11,7 @@ const productsRenderer = (req, res, next) => {
   }
 }
 
-const reviewsRenderer = (req, res, next) => {
+const reviewsRenderer = (req, res) => {
   if (req.method === 'GET'){
     const {id} = req.params;
     res.set('Content-Type', 'text/plain');

@@ -1,7 +1,7 @@
 const http = require('http');
 const fs = require('fs');
 const url = require('url');
-var rs = require('replacestream');
+const rs = require('replacestream');
 
 const app = http.createServer((request, response) => {
   const query = url.parse(request.url, true).query;
