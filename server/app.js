@@ -4,6 +4,13 @@ import logger from './middlewares/logger';
 import parsedQuery from './middlewares/queryparser';
 import parsedCookies from './middlewares/cookieparser';
 import authGuard from './middlewares/authguard';
+import passport from 'passport';
+
+import {
+  facebookStrategy,
+  twitterStrategy,
+  googleStrategy,
+} from './config/social.strategies';
 
 import usersRenderer from './routes/users.router';
 import {
@@ -19,6 +26,12 @@ const middlewares = [
   formidable(),
   parsedCookies,
   parsedQuery,
+
+  // auth straregies
+  facebookStrategy,
+  twitterStrategy,
+  googleStrategy,
+
   logger
 ];
 
@@ -29,6 +42,16 @@ const routes = [
   {route: '/api/users/:id', use: usersRenderer, guard: authGuard},
   {route: '/api/users/', use: usersRenderer, guard: authGuard},
   {route: '/auth', use: authRenderer},
+  // auth callbacks
+  {route: '/auth/facebook', use: passport.authenticate('facebook')},
+  {route: '/auth/facebook/callback', use: passport.authenticate('facebook',
+    {successRedirect: '/', failureRedirect: '/login' })},
+  {route: '/auth/twitter', use: passport.authenticate('twitter')},
+  {route: '/auth/twitter/callback', use: passport.authenticate('twitter',
+    {successRedirect: '/', failureRedirect: '/login' })},
+  {route: '/auth/google', use: passport.authenticate('google')},
+  {route: '/auth/google/callback', use: passport.authenticate('google',
+    {successRedirect: '/', failureRedirect: '/login' })},
 ];
 
 [
