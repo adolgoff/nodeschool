@@ -8,9 +8,9 @@ import passport from 'passport';
 
 import {
   facebookStrategy,
-  twitterStrategy,
-  googleStrategy,
-} from './config/social.strategies';
+//   twitterStrategy,
+//   googleStrategy,
+} from './middlewares/social-strategies';
 
 import usersRenderer from './routes/users.router';
 import {
@@ -23,14 +23,16 @@ import authRenderer from './routes/auth.route';
 export const app = express();
 
 const middlewares = [
-  formidable(),
   parsedCookies,
   parsedQuery,
+  passport.initialize(),
+  passport.session(),
+  formidable(),
 
   // auth straregies
   facebookStrategy,
-  twitterStrategy,
-  googleStrategy,
+  // twitterStrategy,
+  // googleStrategy,
 
   logger
 ];
@@ -39,19 +41,22 @@ const routes = [
   {route: '/api/products/:id/reviews', use: reviewsRenderer, guard: authGuard},
   {route: '/api/products/:id', use: productsRenderer, guard: authGuard},
   {route: '/api/products/', use: productsRenderer, guard: authGuard},
-  {route: '/api/users/:id', use: usersRenderer, guard: authGuard},
-  {route: '/api/users/', use: usersRenderer, guard: authGuard},
+  {route: '/api/users/:id', use: usersRenderer},
+  {route: '/api/users/', use: usersRenderer},
+  // {route: '/api/users/:id', use: usersRenderer, guard: authGuard},
+  // {route: '/api/users/', use: usersRenderer, guard: authGuard},
   {route: '/auth', use: authRenderer},
+
   // auth callbacks
-  {route: '/auth/facebook', use: passport.authenticate('facebook')},
-  {route: '/auth/facebook/callback', use: passport.authenticate('facebook',
-    {successRedirect: '/', failureRedirect: '/login' })},
-  {route: '/auth/twitter', use: passport.authenticate('twitter')},
-  {route: '/auth/twitter/callback', use: passport.authenticate('twitter',
-    {successRedirect: '/', failureRedirect: '/login' })},
-  {route: '/auth/google', use: passport.authenticate('google')},
-  {route: '/auth/google/callback', use: passport.authenticate('google',
-    {successRedirect: '/', failureRedirect: '/login' })},
+  // {route: '/auth/facebook', use: passport.authenticate('facebook')},
+  // {route: '/auth/facebook/callback', use: passport.authenticate('facebook',
+  //   {successRedirect: '/', failureRedirect: '/login' })},
+  // {route: '/auth/twitter', use: passport.authenticate('twitter')},
+  // {route: '/auth/twitter/callback', use: passport.authenticate('twitter',
+  //   {successRedirect: '/', failureRedirect: '/login' })},
+  // {route: '/auth/google', use: passport.authenticate('google')},
+  // {route: '/auth/google/callback', use: passport.authenticate('google',
+  //   {successRedirect: '/', failureRedirect: '/login' })},
 ];
 
 [
